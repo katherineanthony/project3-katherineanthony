@@ -47,9 +47,9 @@ public class FamilyTree {
      */
     public void addPerson(String tobeAdded, int birthYear) {
         Person person = new Person(tobeAdded, birthYear);
-        int vertex = disjointSet.size();
+        int vertex = disjointSet.size(); // it will be the last Person added
         person.setIndex(vertex);
-        disjointSet.add(-1);
+        disjointSet.add(-1); // all elements contain 1 element, themselves
         ArrayList<Person> tempList = new ArrayList<>();
         adjacencyList.add(vertex, tempList);
         people.put(tobeAdded, person);
@@ -154,7 +154,7 @@ public class FamilyTree {
         }
         System.out.println(root);
         Person curr = root;
-        int numIndents = 0;
+        int numIndents = 1;
         printTree(curr, numIndents);
     }
 }

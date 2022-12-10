@@ -24,6 +24,7 @@ public class UserInterface {
         familyTree.addRelationship("Peter John", "Beatrice", "parent");
         familyTree.addPerson("Mary Elizabeth", 1866, 1955);
         familyTree.addRelationship("Mary Elizabeth", "Anna", "child");
+        familyTree.addPerson("Mary", 1866, 1955);
 
         familyTree.traceTree();
     }
