@@ -62,7 +62,7 @@ public class FamilyTree {
         Person p2 = people.get(person2);
 
         if (relationship.compareToIgnoreCase("married") == 0) {
-
+            p2.addMarriage(person1);
         }
         if (relationship.compareToIgnoreCase("parent") == 0) {
             union(p1, p2);

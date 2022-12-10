@@ -5,6 +5,8 @@ public class UserInterface {
         familyTree.addEvent("Roosevelt", "vibes", 1990);
         familyTree.addPerson("Anna", 1990);
         familyTree.addRelationship("Roosevelt", "Anna", "parent");
+        familyTree.addPerson("Louis", 1866, 1955);
+        familyTree.addRelationship("Louis", "Anna", "married");
         familyTree.addPerson("Beatrice", 1990, 2009);
         familyTree.addRelationship("Roosevelt", "Beatrice", "child");
         familyTree.addPerson("Bobby", 1990, 2009);
@@ -13,6 +15,7 @@ public class UserInterface {
         familyTree.addRelationship("Peter John", "Beatrice", "parent");
         familyTree.addPerson("Mary Elizabeth", 1866, 1955);
         familyTree.addRelationship("Mary Elizabeth", "Anna", "child");
+
         familyTree.traceTree();
     }
 

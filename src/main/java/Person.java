@@ -6,6 +6,7 @@ public class Person {
     private int deathYear;
     private ArrayList<String> noteworthyEvents;
     private int index;
+    private String marriage;
 
     public Person(String name, int birthYear, int deathYear) {
         this.name = name;
@@ -39,11 +40,15 @@ public class Person {
         noteworthyEvents.add(year + ": " + event);
     }
 
+    public void addMarriage(String person) {
+        this.marriage = person;
+    }
+
     @Override
     public String toString() {
         return name + " (" +
                 + birthYear + "-" + deathYear + ")" +
-                "; " + noteworthyEvents; // change this so it prints
+                "; " + noteworthyEvents + " m. " + marriage; // change this so it prints
                 // noteworthy events in a proper way
     }
 }
