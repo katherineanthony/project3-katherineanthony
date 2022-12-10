@@ -2,15 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FamilyTree {
-    // can use an adjacency matrix to contain it?
-    // will be both directed and weighted
-    // to describe levels
 
     private HashMap<String, Person> people;
-    private ArrayList<Integer> disjointSet; // default value is 0, which is what we want
+    private ArrayList<Integer> disjointSet;
     private ArrayList<ArrayList<Person>> adjacencyList;
-
-    // create a DISJOINT set because then you could show familial relationships more easily?
 
     public FamilyTree() {
         people = new HashMap<>();
@@ -74,14 +69,14 @@ public class FamilyTree {
         }
     }
 
-    public void printTree(boolean done, Person curr, int numIndents) {
+    public void printTree(Person curr, int numIndents) {
         for (int i = 0; i < adjacencyList.get(curr.getIndex()).size(); i++) {
             for (int j = 0; j < numIndents; j++)
                 System.out.print("  ");
             System.out.println(adjacencyList.get(curr.getIndex()).get(i));
             int newIndents = numIndents + 1;
             if (adjacencyList.get(curr.getIndex()).size() > 0)
-                printTree(false, adjacencyList.get(curr.getIndex()).get(i), newIndents);
+                printTree(adjacencyList.get(curr.getIndex()).get(i), newIndents);
         }
     }
 
@@ -100,10 +95,9 @@ public class FamilyTree {
                 root = p;
         }
         System.out.println(root);
-        boolean done = false;
         Person curr = root;
         int numIndents = 0;
-        printTree(done, curr, numIndents);
+        printTree(curr, numIndents);
     }
 
     @Override

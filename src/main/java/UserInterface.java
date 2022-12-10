@@ -3,6 +3,11 @@ public class UserInterface {
     public static void printRoosevelts(FamilyTree familyTree) {
         familyTree.addPerson("Roosevelt", 1884, 1962);
         familyTree.addEvent("Roosevelt", "vibes", 1990);
+        familyTree.addEvent("Roosevelt", "vibes", 1982);
+        familyTree.addEvent("Roosevelt", "vibes", 1995);
+        familyTree.addEvent("Roosevelt", "vibes", 1965);
+        familyTree.addEvent("Roosevelt", "vibes", 1993);
+
         familyTree.addPerson("Anna", 1990);
         familyTree.addRelationship("Roosevelt", "Anna", "parent");
         familyTree.addPerson("Louis", 1866, 1955);
