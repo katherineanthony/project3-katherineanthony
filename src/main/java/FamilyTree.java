@@ -74,6 +74,17 @@ public class FamilyTree {
         }
     }
 
+    public void printTree(boolean done, Person curr, int numIndents) {
+        for (int i = 0; i < adjacencyList.get(curr.getIndex()).size(); i++) {
+            for (int j = 0; j < numIndents; j++)
+                System.out.print("  ");
+            System.out.println(adjacencyList.get(curr.getIndex()).get(i));
+            int newIndents = numIndents + 1;
+            if (adjacencyList.get(curr.getIndex()).size() > 0)
+                printTree(false, adjacencyList.get(curr.getIndex()).get(i), newIndents);
+        }
+    }
+
     public void traceTree() {
         int smallestIndex = 10000;
         int index = 0;
@@ -83,11 +94,7 @@ public class FamilyTree {
                 index = i;
             }
         }
-        //System.out.println("smallest: " + smallestIndex + " i: " + index);
-
-        //System.out.println("root's children: " + adjacencyList.get(index));
         Person root = null;
-        // do a recursive call on those children to print them all out
         for (Person p: people.values()) {
             if (p.getIndex() == index)
                 root = p;
@@ -95,19 +102,8 @@ public class FamilyTree {
         System.out.println(root);
         boolean done = false;
         Person curr = root;
-        while (!done) {
-            if (adjacencyList.get(curr.getIndex()).size() == 0) {
-                done = true;
-            }
-            else {
-                Person temp = adjacencyList.get(curr.getIndex()).get(0);
-                for (int i = 0; i < adjacencyList.get(curr.getIndex()).size(); i++) {
-                    if (adjacencyList.get(curr.getIndex()).get(i) != null)
-                        System.out.println(adjacencyList.get(curr.getIndex()).get(i));
-                }
-                curr = temp;
-            }
-        }
+        int numIndents = 0;
+        printTree(done, curr, numIndents);
     }
 
     @Override
