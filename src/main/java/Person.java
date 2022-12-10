@@ -1,19 +1,19 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * Person class contains the information for one person
+ */
 public class Person {
-    private String name;
-    private int birthYear;
+    private final String name;
+    private final int birthYear;
     private int deathYear;
-    private ArrayList<String> noteworthyEvents;
-    private HashMap<Integer, String> events;
+    private final HashMap<Integer, String> events;
     private int index;
     private String marriage;
 
     /**
      * Constructor for Person, takes a name, birthYear and deathYear. Initializes
-     * those variables and noteworthyEvents.
+     * those variables and events.
      *
      * @param name of person
      * @param birthYear of person
@@ -23,7 +23,6 @@ public class Person {
         this.name = name;
         this.birthYear = birthYear;
         this.deathYear = deathYear;
-        noteworthyEvents = new ArrayList<>();
         events = new HashMap<>();
     }
 
@@ -37,7 +36,6 @@ public class Person {
     public Person(String name, int birthYear) {
         this.name = name;
         this.birthYear = birthYear;
-        noteworthyEvents = new ArrayList<>();
         events = new HashMap<>();
     }
 
@@ -60,13 +58,13 @@ public class Person {
     }
 
     /**
-     * Method adds event to the ArrayList of events with the year and description.
+     * Method adds event to the HashMap of events with the year and description,
+     * where the year is the key and the description is the value.
      *
      * @param year of event
      * @param event description
      */
     public void addEvent(int year, String event) {
-        noteworthyEvents.add(year + ": " + event);
         events.put(year, event);
     }
 
@@ -79,7 +77,12 @@ public class Person {
         this.marriage = person;
     }
 
-    public void sortEvents() {
+    /**
+     * Method uses insertion sort to sort events. First it copies over the years
+     * from the hashmap of events, and then sorts the years. Then, it sorts and
+     * returns the new array, which has the years in order.
+     */
+    public int[] sortEvents() {
         int[] allyears = new int[events.keySet().size()];
         int index = 0;
         for (int key : events.keySet())
@@ -93,9 +96,14 @@ public class Person {
             }
             allyears[j + 1] = temp;
         }
-
+        return allyears;
     }
 
+    /**
+     * toString for person and their information
+     *
+     * @return person's information
+     */
     @Override
     public String toString() {
         String toBePrinted = "";
@@ -104,9 +112,9 @@ public class Person {
             toBePrinted += deathYear;
         }
         toBePrinted += ")";
-        sortEvents();
-        for (int i = 0; i < noteworthyEvents.size(); i++)
-            toBePrinted += "; " + noteworthyEvents.get(i);
+        int[] years = sortEvents();
+        for (int i = 0; i < events.size(); i++)
+            toBePrinted += "; " + years[i] + ": " + events.get(years[i]);
         if (marriage != null)
             toBePrinted += " m. " + marriage;
         return toBePrinted;

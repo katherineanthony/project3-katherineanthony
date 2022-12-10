@@ -1,12 +1,16 @@
 public class UserInterface {
 
+    /**
+     * This is an example method for how family tree works
+     * @param familyTree of roosevelts
+     */
     public static void printRoosevelts(FamilyTree familyTree) {
         familyTree.addPerson("Roosevelt", 1884, 1962);
-        familyTree.addEvent("Roosevelt", "vibes", 1990);
-        familyTree.addEvent("Roosevelt", "vibes", 1982);
-        familyTree.addEvent("Roosevelt", "vibes", 1995);
-        familyTree.addEvent("Roosevelt", "vibes", 1965);
-        familyTree.addEvent("Roosevelt", "vibes", 1993);
+        familyTree.addEvent("Roosevelt", "living", 1990);
+        familyTree.addEvent("Roosevelt", "vibing", 1982);
+        familyTree.addEvent("Roosevelt", "thriving", 1995);
+        familyTree.addEvent("Roosevelt", "loving", 1965);
+        familyTree.addEvent("Roosevelt", "laughing", 1993);
 
         familyTree.addPerson("Anna", 1990);
         familyTree.addRelationship("Roosevelt", "Anna", "parent");
